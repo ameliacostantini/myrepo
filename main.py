@@ -5,11 +5,17 @@ def print_menu():
     print("2. Decode")
     print("3. Quit\n")
 
-def encode(user_password):
-    new_pass = ""
-    for i in range(len(user_password)):
-        new_pass += str((int(user_password[i]))+3)
-    return new_pass
+def encode(original_pass):
+    encoded_pass = ""
+    for i in range(len(original_pass)):
+        encoded_pass += str((int(original_pass[i]))+3)
+    return encoded_pass
+
+def decode(encoded_pass):
+    original_pass = ""
+    for i in range(len(encoded_pass)):
+        original_pass += str((int(encoded_pass[i]))-3)
+    return original_pass
 
 if __name__ == "__main__":
 
@@ -19,12 +25,12 @@ if __name__ == "__main__":
         user_choice = int(input("Please enter an option: "))
 
         if user_choice == 1:
-            user_password = input("Please enter your password to encode: ")
-            user_password = encode(user_password)
+            original_pass = input("Please enter your password to encode: ")
+            encoded_pass = encode(original_pass)
             print("Your password has been encoded and stored!")
         elif user_choice == 2:
-            #decode()
-            pass
+            original_pass = decode(encoded_pass)
+            print(f'The encoded password is {encoded_pass}, and the original password is {original_pass}.')
         elif user_choice == 3:
             break
 
